@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="watch-title">Watch – Tmovie Clone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    ::-webkit-scrollbar { width: 0; height: 0; }
+  </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden" data-page="watch">
+  <!-- Navigation bar -->
+ <nav class="fixed top-0  bg-black/20 inset-x-0 z-50 flex items-center justify-between px-3 py-2  border-b border-white/10">
+    <!-- Brand name and mobile menu toggle -->
+    <button id="mobileMenuToggle" class="md:hidden  p-2 rounded-full hover:bg-gray-800 focus:outline-none" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+       <div class="flex items-center">
+      <a href="index.html" class="text-2xl font-bold tracking-wide select-none">Tmovie</a>
+      <!-- Mobile menu toggle button -->
+     
+    </div>
+    <!-- Navigation links -->
+    <ul class="hidden md:flex space-x-2">
+      <li>
+        <a href="index.html" class="flex items-center space-x-1 px-3 py-1 rounded-full bg-red-600 text-white text-sm">Home</a>
+      </li>
+      <li>
+        <a href="movies.html" class="flex items-center space-x-1 px-3 py-1 rounded-full hover:bg-gray-700 text-sm">Movies</a>
+      </li>
+      <li>
+        <a href="tv.html" class="flex items-center space-x-1 px-3 py-1 rounded-full hover:bg-gray-700 text-sm">TV&nbsp;Shows</a>
+      </li>
+      <li>
+        <a href="anime.html" class="flex items-center space-x-1 px-3 py-1 rounded-full hover:bg-gray-700 text-sm">Anime</a>
+      </li>
+      <li>
+        <a href="filter.html" class="flex items-center space-x-1 px-3 py-1 rounded-full hover:bg-gray-700 text-sm">Filter</a>
+      </li>
+      <li>
+        <a href="platforms.html" class="flex items-center space-x-1 px-3 py-1 rounded-full hover:bg-gray-700 text-sm">Platforms</a>
+      </li>
+    </ul>
+    <!-- Search bar and actions on the right -->
+    <div class="flex items-center space-x-3">
+      <!-- Search bar -->
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search movies, TV shows…"
+        class="hidden md:block bg-gray-800/80 border border-gray-600 rounded px-3 py-1 text-sm focus:outline-none focus:ring focus:ring-red-500 placeholder-gray-400"
+      />
+      <!-- Mobile search icon -->
+      <button id="mobileSearchBtn" class="md:hidden p-2 rounded-full hover:bg-gray-800 focus:outline-none" aria-label="Search">
+        <i class="fa-solid fa-search"></i>
+      </button>
+   <a href="filter.html" class="block py-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="#00ffd5" d="M8 0C3.582 0 0 1.119 0 2.5V4l6 6v5c0 .552.895 1 2 1s2-.448 2-1v-5l6-6V2.5C16 1.119 12.418 0 8 0M1.475 2.169c.374-.213.9-.416 1.52-.586C4.369 1.207 6.147 1 8 1s3.631.207 5.005.583c.62.17 1.146.372 1.52.586c.247.141.38.26.442.331c-.062.071-.195.19-.442.331c-.374.213-.9.416-1.52.586C11.631 3.793 9.853 4 8 4s-3.631-.207-5.005-.583c-.62-.17-1.146-.372-1.52-.586a1.7 1.7 0 0 1-.442-.331c.062-.071.195-.19.442-.331"/></svg></a>  
+      <!-- Language selector -->
+      <select id="langSelect" class=" md:block bg-gray-800/80 border border-gray-600 rounded px-2 py-1 text-sm focus:outline-none focus:ring focus:ring-red-500 text-gray-300">
+        <option value="en-US">EN</option>
+        <option value="hi-IN">HI</option>
+        <option value="ja-JP">JP</option>
+        <option value="es-ES">ES</option>
+        <option value="fr-FR">FR</option>
+      </select>
+      <!-- Watchlist link -->
+      <a href="watchlist.html" class="p-2 rounded-full hover:bg-gray-800" title="Watchlist">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5V19l7-4 7 4V5H5z" />
+        </svg>
+      </a>
+      <!-- Theme toggle button -->
+    
+    </div>
+  </nav>
+
+
+  <!-- Mobile navigation menu -->
+  <div id="mobileMenu" class="md:hidden hidden fixed top-16 left-0 right-0 bg-black/90 backdrop-blur-md z-40 border-b border-white/10 px-6 py-4 space-y-3">
+    <a href="index.html" class="block py-2">Home</a>
+    <a href="movies.html" class="block py-2">Movies</a>
+    <a href="tv.html" class="block py-2">TV Shows</a>
+    <a href="anime.html" class="block py-2">Anime</a>
+    <a href="filter.html" class="block py-2">Filter</a>
+    <a href="platforms.html" class="block py-2">Platforms</a>
+    <a href="watchlist.html" class="block py-2">Watchlist</a>
+    <button id="mobileThemeToggle" class="flex items-center py-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.657-9.657h-1M4.343 12.343h-1m12.02 5.657l-.707-.707M6.343 6.343l-.707-.707m12.02 12.02l-.707-.707M6.343 17.657l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+      <span>Theme</span>
+    </button>
+  </div>
+
+  <!-- Watch content -->
+  <section class="px-6 pt-24 pb-8">
+    <h1 id="watch-title" class="text-3xl md:text-4xl font-bold mb-4"></h1>
+    <!-- Server selection (dropdown) with sandbox toggle -->
+    <div class="mb-4 w-50 flex items-center space-x-4">
+      <select id="serverSelect" class="bg-gray-800 border border-gray-600 rounded px-3 py-1 text-sm focus:outline-none  focus:ring focus:ring-red-500 text-gray-300">
+        <!-- Options will be populated by JS -->
+      </select>
+      <!-- Hidden checkbox controlling sandbox -->
+      <input type="checkbox" id="sandboxToggle" class="hidden" />
+      <!-- Label for sandbox toggle; the icon will be updated via JS -->
+      <label for="sandboxToggle" id="sandboxToggleLabel" class="text-xl cursor-pointer p-2 text-gray-400 hover:text-white" title="Toggle sandbox"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#27b202" fill-opacity="0" stroke="#27b202" stroke-dasharray="64" stroke-dashoffset="64" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l-9 3.5v6.5c0 3.5 3.5 9 8 10c4.5 -1 8 -6.5 8 -10v-6.5l-8 -3.5Z"><animate fill="freeze" attributeName="fill-opacity" begin="0.7s" dur="0.15s" values="0;0.3"/><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="64;0"/></path></svg></label>
+  <button id="watch-download-btn" class="flex items-center border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">
+     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="20" stroke-dashoffset="20" d="M12 4h2v6h2.5l-4.5 4.5M12 4h-2v6h-2.5l4.5 4.5"><animate attributeName="d" begin="0.5s" dur="1.5s" repeatCount="indefinite" values="M12 4h2v6h2.5l-4.5 4.5M12 4h-2v6h-2.5l4.5 4.5;M12 4h2v3h2.5l-4.5 4.5M12 4h-2v3h-2.5l4.5 4.5;M12 4h2v6h2.5l-4.5 4.5M12 4h-2v6h-2.5l4.5 4.5"/><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.4s" values="20;0"/></path><path stroke-dasharray="14" stroke-dashoffset="14" d="M6 19h12"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.5s" dur="0.2s" values="14;0"/></path></g></svg>
+     
+     
+      <span> Download </span> <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#27b202" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="2 4" stroke-dashoffset="6" d="M12 3c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9"><animate attributeName="stroke-dashoffset" dur="0.6s" repeatCount="indefinite" values="6;0"/></path><path stroke-dasharray="32" stroke-dashoffset="32" d="M12 21c-4.97 0 -9 -4.03 -9 -9c0 -4.97 4.03 -9 9 -9"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.1s" dur="0.4s" values="32;0"/></path><path stroke-dasharray="10" stroke-dashoffset="10" d="M12 8v7.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.5s" dur="0.2s" values="10;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 15.5l3.5 -3.5M12 15.5l-3.5 -3.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="6;0"/></path></g></svg>
+    </button> </div>
+    <!-- Video player container with 16:9 aspect ratio.  The iframe injected via JS will
+         be absolutely positioned to fill this container. -->
+    <div id="watch-player" class="relative w-full bg-gray-800 mb-4" style="padding-top: 56.25%;">
+      <!-- The iframe will be injected by JS -->
+    </div>
+    
+
+    <!-- Season and episode selector (TV only) -->
+    <div id="season-episode-section" class="mt-8">
+      <div id="season-tabs" class="flex overflow-x-auto space-x-2 mb-4"></div>
+      <div id="episode-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4"></div>
+    </div>
+  </section>
+
+  <!-- Download pop-up -->
+    <!-- Download server selection pop‑up -->
+    <div id="download-popup" class="fixed inset-0 bg-black/70 flex items-center justify-center hidden z-50">
+      <div class="bg-gray-900 p-4 rounded-lg w-72">
+        <div class="flex justify-between items-center mb-2">
+          <h3 class="text-lg font-semibold">Select Download Source</h3>
+          <button id="download-close" class="text-gray-400 hover:text-white">&times;</button>
+        </div>
+        <div id="download-list" class="space-y-2"></div>
+      </div>
+    </div>
+
+    <!-- Download iframe pop‑up for DL/Worker servers -->
+    <div id="download-iframe-popup" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center hidden z-50">
+      <div class="bg-gray-900 rounded-lg overflow-hidden" style="width:90%;max-width:640px;">
+        <div class="flex justify-between items-center p-2 border-b border-gray-700">
+          <h3 class="text-lg font-semibold">Downloading…</h3>
+          <button id="download-iframe-close" class="text-gray-400 hover:text-white">&times;</button>
+        </div>
+        <!-- 16:9 iframe container for download servers -->
+        <div class="relative" style="padding-top:56.25%;">
+          <div id="download-iframe-container" class="absolute inset-0"></div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Mobile bottom navigation bar -->
+  <nav id="bottom-nav" class="fixed bottom-0 inset-x-0 z-50 bg-black/80 backdrop-blur-md border-t border-white/10 md:hidden">
+    <div class="flex justify-around text-xs">
+      <a href="index.html" data-page="home" class="flex flex-col items-center py-2 px-1">
+        <span class="text-lg">🏠</span>
+        <span>Home</span>
+      </a>
+      <a href="movies.html" data-page="movies" class="flex flex-col items-center py-2 px-1">
+        <span class="text-lg">🎬</span>
+        <span>Movies</span>
+      </a>
+      <a href="tv.html" data-page="tv" class="flex flex-col items-center py-2 px-1">
+        <span class="text-lg">📺</span>
+        <span>TV</span>
+      </a>
+      <a href="anime.html" data-page="anime" class="flex flex-col items-center py-2 px-1">
+        <span class="text-lg">🐉</span>
+        <span>Anime</span>
+      </a>
+      <a href="platforms.html" data-page="platforms" class="flex flex-col items-center py-2 px-1">
+        <span class="text-lg">💠</span>
+        <span>Platforms</span>
+      </a>
+      <a href="watchlist.html" data-page="watchlist" class="flex flex-col items-center py-2 px-1">
+        <span class="text-lg">▶️</span>
+        <span>Watch</span>
+      </a>
+    </div>
+  </nav>
+
+  <script src="app.js"></script>
+
+  <!-- Mobile Search Overlay -->
+  <div id="search-overlay" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden">
+    <div class="p-4">
+      <div class="flex items-center mb-2">
+        <input id="overlaySearchInput" type="text" placeholder="Search movies, TV shows…" class="flex-grow bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white focus:outline-none" />
+        <button id="overlayCloseBtn" class="ml-3 text-gray-400 hover:text-white">
+          <i class="fa-solid fa-times"></i>
+        </button>
+      </div>
+      <div id="overlaySearchResults" class="space-y-2 max-h-[50vh] overflow-y-auto"></div>
+    </div>
+  </div>
+</body>
+</html>

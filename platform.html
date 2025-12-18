@@ -1,0 +1,345 @@
+ <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    ::-webkit-scrollbar { width: 0; height: 0; }
+  </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden" data-page="platforms">
+  <!-- Navigation bar -->
+ <nav class="fixed top-0  bg-black/20 inset-x-0 z-50 flex items-center justify-between px-3 py-2  border-b border-white/10">
+    <!-- Brand name and mobile menu toggle -->
+    <button id="mobileMenuToggle" class="md:hidden  p-2 rounded-full hover:bg-gray-800 focus:outline-none" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+       <div class="flex items-center">
+      <a href="index.html" class="text-2xl font-bold tracking-wide select-none">Tmovie</a>
+      <!-- Mobile menu toggle button -->
+     
+    </div>
+    <!-- Navigation links -->
+    <ul class="hidden md:flex space-x-2">
+      <li>
+        <a href="index.html" class="flex items-center space-x-1 px-3 py-1 rounded-full bg-red-600 text-white text-sm">Home</a>
+      </li>
+      <li>
+        <a href="movies.html" class="flex items-center space-x-1 px-3 py-1 rounded-full hover:bg-gray-700 text-sm">Movies</a>
+      </li>
+      <li>
+        <a href="tv.html" class="flex items-center space-x-1 px-3 py-1 rounded-full hover:bg-gray-700 text-sm">TV&nbsp;Shows</a>
+      </li>
+      <li>
+        <a href="anime.html" class="flex items-center space-x-1 px-3 py-1 rounded-full hover:bg-gray-700 text-sm">Anime</a>
+      </li>
+      <li>
+        <a href="filter.html" class="flex items-center space-x-1 px-3 py-1 rounded-full hover:bg-gray-700 text-sm">Filter</a>
+      </li>
+      <li>
+        <a href="platforms.html" class="flex items-center space-x-1 px-3 py-1 rounded-full hover:bg-gray-700 text-sm">Platforms</a>
+      </li>
+    </ul>
+    <!-- Search bar and actions on the right -->
+    <div class="flex items-center space-x-3">
+      <!-- Search bar -->
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search movies, TV shows…"
+        class="hidden md:block bg-gray-800/80 border border-gray-600 rounded px-3 py-1 text-sm focus:outline-none focus:ring focus:ring-red-500 placeholder-gray-400"
+      />
+      <!-- Mobile search icon -->
+      <button id="mobileSearchBtn" class="md:hidden p-2 rounded-full hover:bg-gray-800 focus:outline-none" aria-label="Search">
+        <i class="fa-solid fa-search"></i>
+      </button>
+   <a href="filter.html" class="block py-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="#00ffd5" d="M8 0C3.582 0 0 1.119 0 2.5V4l6 6v5c0 .552.895 1 2 1s2-.448 2-1v-5l6-6V2.5C16 1.119 12.418 0 8 0M1.475 2.169c.374-.213.9-.416 1.52-.586C4.369 1.207 6.147 1 8 1s3.631.207 5.005.583c.62.17 1.146.372 1.52.586c.247.141.38.26.442.331c-.062.071-.195.19-.442.331c-.374.213-.9.416-1.52.586C11.631 3.793 9.853 4 8 4s-3.631-.207-5.005-.583c-.62-.17-1.146-.372-1.52-.586a1.7 1.7 0 0 1-.442-.331c.062-.071.195-.19.442-.331"/></svg></a>  
+      <!-- Language selector -->
+      <select id="langSelect" class=" md:block bg-gray-800/80 border border-gray-600 rounded px-2 py-1 text-sm focus:outline-none focus:ring focus:ring-red-500 text-gray-300">
+        <option value="en-US">EN</option>
+        <option value="hi-IN">HI</option>
+        <option value="ja-JP">JP</option>
+        <option value="es-ES">ES</option>
+        <option value="fr-FR">FR</option>
+      </select>
+      <!-- Watchlist link -->
+      <a href="watchlist.html" class="p-2 rounded-full hover:bg-gray-800" title="Watchlist">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5V19l7-4 7 4V5H5z" />
+        </svg>
+      </a>
+      <!-- Theme toggle button -->
+    
+    </div>
+  </nav>
+
+
+  <!-- Mobile navigation menu -->
+  <div id="mobileMenu" class="md:hidden hidden fixed top-16 left-0 right-0 bg-black/90 backdrop-blur-md z-40 border-b border-white/10 px-6 py-4 space-y-3">
+    <a href="index.html" class="block py-2">Home</a>
+    <a href="movies.html" class="block py-2">Movies</a>
+    <a href="tv.html" class="block py-2">TV Shows</a>
+    <a href="anime.html" class="block py-2">Anime</a>
+    <a href="filter.html" class="block py-2">Filter</a>
+    <a href="platforms.html" class="block py-2">Platforms</a>
+    <a href="watchlist.html" class="block py-2">Watchlist</a>
+    <button id="mobileThemeToggle" class="flex items-center py-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.657-9.657h-1M4.343 12.343h-1m12.02 5.657l-.707-.707M6.343 6.343l-.707-.707m12.02 12.02l-.707-.707M6.343 17.657l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+      <span>Theme</span>
+    </button>
+  </div>
+  
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie App</title>
+<style>
+    /* ========= BASE ========= */
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI; background: #020617; color: #fff; }
+
+    /* ========= HEADER ========= */
+    .dk-header {
+        padding: 18px; font-size: 22px; font-weight: 700; margin-top: 20px;
+        background: rgba(2, 6, 23, .9); position: sticky; top: 0; z-index: 50;
+        backdrop-filter: blur(10px); border-bottom: 1px solid #1e293b;
+    }
+
+    /* ========= TABS ========= */
+    .dk-tabs { display: flex; gap: 12px; padding: 14px 18px; overflow-x: auto; }
+    .dk-tab {
+        padding: 8px 18px; border-radius: 30px; background: #0f172a;
+        cursor: pointer; position: relative; overflow: hidden; white-space: nowrap;
+        border: 1px solid #1e293b; color: #94a3b8; font-size: 14px;
+    }
+    .dk-tab.active { background: #020617; color: #fff; border-color: #6366f1; }
+    /* Glow effect on active tab */
+    .dk-tab.active::before {
+        content: ""; position: absolute; inset: 0; border-radius: 30px; padding: 1.5px;
+        background: linear-gradient(120deg, #6366f1, #22d3ee, #a855f7);
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor; mask-composite: exclude;
+    }
+
+    /* ========= GRID ========= */
+    .dk-grid {
+        padding: 18px; display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjusted for mobile */
+        gap: 16px;
+    }
+
+    /* ========= CARD (Arcane Style) ========= */
+    .dk-card {
+        position: relative; border-radius: 12px; overflow: hidden;
+        background: #0f172a; cursor: pointer; transition: .3s;
+        aspect-ratio: 2/3; /* Enforces poster shape */
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+    }
+    
+    .dk-card:hover { transform: scale(1.03); z-index: 10; }
+
+    .dk-card img {
+        width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+
+    /* Dark Gradient Overlay at Bottom */
+    .dk-card::after {
+        content: ""; position: absolute; inset: 0;
+        background: linear-gradient(to top, rgba(2,6,23, 1) 0%, rgba(2,6,23, 0.6) 30%, transparent 60%);
+    }
+
+    /* Title Styling */
+    .dk-card-content {
+        position: absolute; bottom: 0; left: 0; width: 100%; padding: 12px; z-index: 2;
+    }
+    .dk-card-title {
+        font-size: 14px; font-weight: 600; line-height: 1.3;
+        color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+
+    /* ========= RATING BADGE (Top Left) ========= */
+    .dk-rating {
+        position: absolute; top: 8px; left: 8px; z-index: 5;
+        width: 36px; height: 36px; border-radius: 50%;
+        background: rgba(0, 0, 0, 0.75);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 12px; font-weight: 700; color: #fff;
+        backdrop-filter: blur(4px);
+    }
+    /* The Green Ring */
+    .dk-rating svg {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        transform: rotate(-90deg);
+    }
+    .dk-rating circle {
+        fill: none; stroke-width: 3; stroke-linecap: round;
+    }
+    .dk-rating-bg { stroke: rgba(255,255,255,0.2); }
+    .dk-rating-val { stroke: #22c55e; /* Green color like screenshot */ stroke-dasharray: 100; stroke-dashoffset: 20; }
+
+    /* ========= LOADER ========= */
+    .dk-loader { text-align: center; padding: 40px; color: #94a3b8; font-size: 14px; }
+</style>
+</head>
+<body>
+
+    <div class="dk-header" id="pageTitle">Browse Movies</div>
+
+    <div class="dk-tabs">
+        <div class="dk-tab active" onclick="switchTab('movie', this)">Movies</div>
+        <div class="dk-tab" onclick="switchTab('tv', this)">TV Shows</div>
+    </div>
+
+    <div class="dk-grid" id="contentGrid"></div>
+    <div class="dk-loader" id="loader">Loading...</div>
+
+<script>
+    const API = "fed86956458f19fb45cdd382b6e6de83"; // Your Key
+    const q = new URLSearchParams(location.search);
+    const PROVIDER = q.get("provider") || 8; 
+    const NAME = q.get("name") || "Browse Platform";
+    
+    let CURRENT_TYPE = "movie";
+    let PAGE = 1;
+    let LOADING = false;
+    
+    const grid = document.getElementById("contentGrid");
+    const loader = document.getElementById("loader");
+    document.getElementById("pageTitle").innerText = NAME;
+
+    /* ---------- SWITCH TAB ---------- */
+    function switchTab(type, el) {
+        if (CURRENT_TYPE === type) return;
+        document.querySelectorAll(".dk-tab").forEach(t => t.classList.remove("active"));
+        el.classList.add("active");
+        CURRENT_TYPE = type;
+        PAGE = 1;
+        grid.innerHTML = "";
+        loadMore();
+    }
+
+    /* ---------- LOAD DATA ---------- */
+    function loadMore() {
+        if (LOADING) return;
+        LOADING = true;
+        loader.style.display = "block";
+
+        const url = `https://api.themoviedb.org/3/discover/${CURRENT_TYPE}` +
+            `?api_key=${API}` +
+            `&with_watch_providers=${PROVIDER}` +
+            `&with_watch_monetization_types=flatrate` +
+            `&watch_region=IN` +
+            `&sort_by=popularity.desc` +
+            `&page=${PAGE}`;
+
+        fetch(url)
+            .then(r => r.json())
+            .then(d => {
+                if (!d.results || !d.results.length) {
+                    loader.innerText = "No more results";
+                    return;
+                }
+
+                d.results.forEach(x => {
+                    if (!x.poster_path) return;
+
+                    // Calculate Rating for the circle
+                    const rating = x.vote_average ? x.vote_average.toFixed(1) : "0.0";
+                    const ratingPercent = (x.vote_average * 10); // for stroke offset
+                    const offset = 100 - ratingPercent; 
+
+                    const card = document.createElement("div");
+                    card.className = "dk-card";
+                    
+                    card.innerHTML = `
+                        <div class="dk-rating">
+                            <svg viewBox="0 0 36 36">
+                                <circle class="dk-rating-bg" cx="18" cy="18" r="15.5"></circle>
+                                <circle class="dk-rating-val" cx="18" cy="18" r="15.5" stroke-dashoffset="${offset}"></circle>
+                            </svg>
+                            <span>${rating}</span>
+                        </div>
+                        <img src="https://image.tmdb.org/t/p/w342${x.poster_path}" loading="lazy" alt="${x.title || x.name}">
+                        <div class="dk-card-content">
+                            <div class="dk-card-title">${x.title || x.name}</div>
+                        </div>
+                    `;
+                    
+                    card.onclick = () => location.href = `details.html?type=${CURRENT_TYPE}&id=${x.id}`;
+                    grid.appendChild(card);
+                });
+
+                PAGE++;
+                LOADING = false;
+                loader.style.display = "none";
+            })
+            .catch(err => {
+                console.error(err);
+                loader.innerText = "Error loading data";
+                LOADING = false;
+            });
+    }
+
+    /* ---------- INFINITE SCROLL ---------- */
+    window.addEventListener("scroll", () => {
+        if (window.innerHeight + scrollY >= document.body.offsetHeight - 500) {
+            loadMore();
+        }
+    });
+
+    /* ---------- INIT ---------- */
+    loadMore();
+</script>
+</body>
+</html>
+
+  <nav id="bottom-nav" class="fixed bottom-0 inset-x-0 z-50 bg-black/80 backdrop-blur-md border-t border-white/10 md:hidden">
+    <div class="flex justify-around text-xs">
+      <a href="index.html" data-page="home" class="flex flex-col items-center py-2 px-1">
+        <span class="text-lg">🏠</span>
+        <span>Home</span>
+      </a>
+      <a href="movies.html" data-page="movies" class="flex flex-col items-center py-2 px-1">
+        <span class="text-lg">🎬</span>
+        <span>Movies</span>
+      </a>
+      <a href="tv.html" data-page="tv" class="flex flex-col items-center py-2 px-1">
+        <span class="text-lg">📺</span>
+        <span>TV</span>
+      </a>
+      <a href="anime.html" data-page="anime" class="flex flex-col items-center py-2 px-1">
+        <span class="text-lg">🐉</span>
+        <span>Anime</span>
+      </a>
+      <a href="platforms.html" data-page="platforms" class="flex flex-col items-center py-2 px-1">
+        <span class="text-lg">💠</span>
+        <span>Platforms</span>
+      </a>
+      <a href="watchlist.html" data-page="watchlist" class="flex flex-col items-center py-2 px-1">
+        <span class="text-lg">▶️</span>
+        <span>Watch</span>
+      </a>
+    </div>
+  </nav>
+
+  <script src="app.js"></script>
+
+  <!-- Mobile Search Overlay -->
+  <div id="search-overlay" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden">
+    <div class="p-4">
+      <div class="flex items-center mb-2">
+        <input id="overlaySearchInput" type="text" placeholder="Search movies, TV shows…" class="flex-grow bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white focus:outline-none" />
+        <button id="overlayCloseBtn" class="ml-3 text-gray-400 hover:text-white">
+          <i class="fa-solid fa-times"></i>
+        </button>
+      </div>
+      <div id="overlaySearchResults" class="space-y-2 max-h-[50vh] overflow-y-auto"></div>
+    </div>
+  </div>
+</body>
+</html>

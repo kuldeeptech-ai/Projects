@@ -3,20 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tmovie&nbsp;– Free Movies, TV Shows &amp; Anime Streaming</title>
-  <!-- Include Tailwind via CDN so we don’t have to compile it locally -->
+  <title>TV Shows – Tmovie Clone</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <style>
-    /* Hide scrollbars in the hero section when images overflow */
-    ::-webkit-scrollbar {
-      width: 0;
-      height: 0;
-    }
-
-    /* Custom gradient button styles inspired by the provided design */
+    ::-webkit-scrollbar { width: 0; height: 0; }
+    /* Custom gradient button styles */
     .blue {
       background: linear-gradient(45deg, #000125, #0e00c7);
       box-shadow: 0px 6px 15px -2px #2b58ff;
@@ -41,22 +34,15 @@
       background: linear-gradient(45deg, cyan, #00251c);
       box-shadow: 0px 6px 15px -2px cyan;
     }
-    /* Subtle bump animation for buttons */
     @keyframes bump {
-      0% {
-        filter: saturate(1);
-        background-size: 100%;
-      }
-      100% {
-        filter: saturate(2);
-        background-size: 140%;
-      }
+      0% { filter: saturate(1); background-size: 100%; }
+      100% { filter: saturate(2); background-size: 140%; }
     }
   </style>
 </head>
-<body class="bg-black text-white overflow-x-hidden" data-page="home">
+<body class="bg-black text-white overflow-x-hidden" data-page="tv">
   <!-- Navigation bar -->
-  <nav class="fixed top-0  bg-black/20 inset-x-0 z-50 flex items-center justify-between px-3 py-2  border-b border-white/10">
+ <nav class="fixed top-0  bg-black/20 inset-x-0 z-50 flex items-center justify-between px-3 py-2  border-b border-white/10">
     <!-- Brand name and mobile menu toggle -->
     <button id="mobileMenuToggle" class="md:hidden  p-2 rounded-full hover:bg-gray-800 focus:outline-none" aria-label="Toggle menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -131,104 +117,66 @@
     <a href="filter.html" class="block py-2">Filter</a>
     <a href="platforms.html" class="block py-2">Platforms</a>
     <a href="watchlist.html" class="block py-2">Watchlist</a>
-   
+    <button id="mobileThemeToggle" class="flex items-center py-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.657-9.657h-1M4.343 12.343h-1m12.02 5.657l-.707-.707M6.343 6.343l-.707-.707m12.02 12.02l-.707-.707M6.343 17.657l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+      <span>Theme</span>
+    </button>
   </div>
 
-  <!-- Hero section -->
-  <section id="hero" class="relative w-full h-[40vh] flex items-center justify-start px-6 pt-20 md:pt-24" style="background-size:cover;background-position:center;">
+  <!-- Hero section for TV shows page -->
+  <section id="hero" class="relative w-full h-[60vh] flex items-center justify-start px-6 pt-20 md:pt-24" style="background-size:cover;background-position:center;">
     <div class="absolute inset-0 bg-gradient-to-r from-black via-black/30 to-transparent"></div>
     <div class="relative z-10 max-w-xl space-y-4">
-      <!-- Logo (approx 100x100) -->
-   
-      <h1 class="hero-title text-2xl md:text-5xl font-extrabold leading-tight"></h1>
+      <h1 class="hero-title text-4xl md:text-5xl font-extrabold leading-tight"></h1>
       <p class="hero-info flex items-center space-x-4 text-sm text-gray-300"></p>
       <div class="flex items-center space-x-3">
         <!-- Play button -->
         <button class="hero-watch-btn flex items-center blue text-white px-4 py-2 rounded transition-transform" style="animation: bump 6s infinite alternate;">
-       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-opacity="0" stroke="currentColor" stroke-dasharray="40" stroke-dashoffset="40" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 6l10 6l-10 6Z"><animate fill="freeze" attributeName="fill-opacity" begin="0.5s" dur="1.5s" values="0;1"/><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.5s" values="40;0"/></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 3.172l6.364 6.364a1 1 0 010 1.414L10 17.314l-6.364-6.364a1 1 0 010-1.414L10 3.172z" />
+          </svg>
           <span>Play</span>
         </button>
         <!-- Info button -->
         <button class="hero-info-btn flex items-center black text-white px-4 py-2 rounded transition-transform" style="animation: bump 6s infinite alternate;">
-       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-dasharray="12" stroke-dashoffset="12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19 12l-7 -7M19 12l-7 7"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="12;0"/></path><path d="M13 12l-7 -7M13 12l-7 7"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.3s" dur="1.3s" values="12;0"/></path></g></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 6h.01" />
+          </svg>
           <span>Info</span>
         </button>
         <!-- Add/Remove button -->
         <button class="hero-add-btn flex items-center crimson text-white px-4 py-2 rounded transition-transform" style="animation: bump 6s infinite alternate;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m12 18l-7 3V3h8v2H7v12.95l5-2.15l5 2.15V11h2v10zM7 5h6zm10 4V7h-2V5h2V3h2v2h2v2h-2v2z"/></svg>
-          <span>save</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+          <span>Add</span>
         </button>
       </div>
     </div>
-    <!-- Indicator dots for hero slider -->
-    <div id="hero-indicator" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex"></div>
   </section>
 
-  <!-- Browse by Platform -->
+  <!-- Popular TV Shows (horizontal) -->
   <section class="px-6 py-8">
-    <h2 class="text-2xl font-bold mb-4">Browse by Platform</h2>
-   <style>
-.scrollbar-hide::-webkit-scrollbar{display:none}
-.scrollbar-hide{-ms-overflow-style:none;scrollbar-width:none}
-</style>
-
-  <div id="providerGrid" class="flex gap-4 overflow-x-auto py-3 px-2 scrollbar-hide dk-provider-grid"></div>
-</section>
-
-<script>
-const API = "fed86956458f19fb45cdd382b6e6de83";
-const REGION = "IN";
-const grid = document.getElementById("providerGrid");
-
-fetch(`https://api.themoviedb.org/3/watch/providers/movie?api_key=${API}&watch_region=${REGION}`)
-.then(r=>r.json())
-.then(d=>{
-  const list = d.results
-    .filter(x=>x.logo_path)
-    .sort((a,b)=>(a.display_priority??99)-(b.display_priority??99));
-
-  grid.innerHTML = list.map(p=>`
-    <div class="mt-4 flex-shrink-0 w-32 h-32 bg-gray-900 rounded-lg flex flex-col items-center justify-center gap-2 hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/30 transition cursor-pointer" onclick="openPlatform(${p.provider_id},'${p.provider_name}')">
-      <img class="w-20 h-20 object-contain rounded-md" src="https://image.tmdb.org/t/p/w200${p.logo_path}">
-      <div class="text-xs font-semibold text-gray-200 text-center">${p.provider_name}</div>
+    <div class="flex items-center justify-between mb-2">
+      <h2 class="text-2xl font-bold">Popular TV Shows</h2>
+      <!-- View all link navigates to filter page with popularity sorting -->
+      <a href="filter.html?type=tv&sort=vote_average.desc" class="text-sm text-blue-400 hover:underline">View All</a>
     </div>
-  `).join("");
-});
-
-function openPlatform(id,name){
-  window.location.href = `platform.html?provider=${id}&name=${encodeURIComponent(name)}`;
-}
-</script>
-
-  </section>
-  <!-- Trending Movies -->
-  <section class="px-6 py-8">
-    <h2 class="text-2xl font-bold mb-4">Trending Movies</h2>
-    <!-- Horizontal scrolling list for trending movies -->
-    <div id="home-trending-movies" class="flex space-x-4 overflow-x-auto pb-2"></div>
+    <div id="tv-popular" class="flex space-x-4 overflow-x-auto pb-2"></div>
   </section>
 
-  <!-- Trending TV Shows -->
+  <!-- Top Rated TV Shows (horizontal) -->
   <section class="px-6 py-8">
-    <h2 class="text-2xl font-bold mb-4">Trending TV Shows</h2>
-    <!-- Horizontal scrolling list for trending TV shows -->
-    <div id="home-trending-tv" class="flex space-x-4 overflow-x-auto pb-2"></div>
-  </section>
-  <!-- Discover section with filters -->
-  <section class="px-6 py-8">
-    <h2 class="text-2xl font-bold mb-4">Discover</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-      <select id="discover-year" class="bg-gray-800 border border-gray-600 rounded px-2 py-2 text-sm focus:outline-none focus:ring focus:ring-red-500 text-gray-300"></select>
-      <select id="discover-genre" class="bg-gray-800 border border-gray-600 rounded px-2 py-2 text-sm focus:outline-none focus:ring focus:ring-red-500 text-gray-300"></select>
-      <select id="discover-language" class="bg-gray-800 border border-gray-600 rounded px-2 py-2 text-sm focus:outline-none focus:ring focus:ring-red-500 text-gray-300"></select>
-      <select id="discover-sort" class="bg-gray-800 border border-gray-600 rounded px-2 py-2 text-sm focus:outline-none focus:ring focus:ring-red-500 text-gray-300"></select>
+    <div class="flex items-center justify-between mb-2">
+      <h2 class="text-2xl font-bold">Top Rated TV Shows</h2>
+      <!-- View all link navigates to filter page with rating sorting -->
+      <a href="filter.html?type=tv&sort=vote_average.desc" class="text-sm text-blue-400 hover:underline">View All</a>
     </div>
-    <div id="home-discover-results" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
+    <div id="tv-top-rated" class="flex space-x-4 overflow-x-auto pb-2"></div>
   </section>
 
-
-
-  <!-- Include the shared script -->
   <!-- Mobile bottom navigation bar -->
   <nav id="bottom-nav" class="fixed bottom-0 inset-x-0 z-50 bg-black/80 backdrop-blur-md border-t border-white/10 md:hidden">
     <div class="flex justify-around text-xs">
@@ -260,19 +208,6 @@ function openPlatform(id,name){
   </nav>
 
   <script src="app.js"></script>
-
-  <!-- Mobile Search Overlay -->
-  <div id="search-overlay" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden">
-    <div class="p-4">
-      <div class="flex items-center mb-2">
-        <input id="overlaySearchInput" type="text" placeholder="Search movies, TV shows…" class="flex-grow bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white focus:outline-none" />
-        <button id="overlayCloseBtn" class="ml-3 text-gray-400 hover:text-white">
-          <i class="fa-solid fa-times"></i>
-        </button>
-      </div>
-      <div id="overlaySearchResults" class="space-y-2 max-h-[50vh] overflow-y-auto"></div>
-    </div>
-  </div>
 
   <!-- Mobile Search Overlay -->
   <div id="search-overlay" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden">
